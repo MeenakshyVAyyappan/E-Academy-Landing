@@ -26,6 +26,38 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validation
+    const { name, email, phone, webinar } = formData;
+    if (!name || !email || !phone || !webinar) {
+      toast({
+        title: 'Error',
+        description: 'Please fill all the fields.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({
+        title: 'Invalid Email',
+        description: 'Please enter a valid email address.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+      toast({
+        title: 'Invalid Phone Number',
+        description: 'Please enter a valid 10-digit phone number.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -113,7 +145,6 @@ const ContactForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
               />
             </motion.div>
 
@@ -128,7 +159,6 @@ const ContactForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
               />
             </motion.div>
 
@@ -141,7 +171,12 @@ const ContactForm = () => {
                 placeholder="Phone Number"
                 name="phone"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  setFormData({ ...formData, phone: value });
+                }}
+                type="tel"
+                inputMode="numeric"
               />
             </motion.div>
 
