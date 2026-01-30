@@ -19,7 +19,7 @@ const HeroSection = () => {
     <section
       ref={containerRef}
       id="contact"
-      className="relative min-h-screen flex items-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-20"
     >
       {/* Background */}
       <motion.div
@@ -56,7 +56,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <motion.div style={{ opacity }} className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
@@ -87,7 +87,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              E-Academy delivers cutting-edge IT solutions that empower businesses 
+              E-Academy delivers cutting-edge IT solutions that empower businesses
               to innovate, scale, and succeed in the digital era.
             </motion.p>
 
@@ -139,7 +139,7 @@ const HeroSection = () => {
             <ContactForm />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div

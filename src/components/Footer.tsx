@@ -60,7 +60,7 @@ const Footer = () => {
                 <img
                   src="/images/e-academylogo1.0.png"
                   alt="E-Academy Logo"
-                  className="w-10 h-10 object-contain"
+                  className="h-16 w-auto object-contain"
                 />
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-sm mb-6">
@@ -70,18 +70,26 @@ const Footer = () => {
 
               {/* Contact Info */}
               <div className="space-y-3">
-                <a href="mailto:hello@eacademy.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:info@ecraftz.in" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Mail size={18} />
-                  <span>hello@eacademy.com</span>
+                  <span>info@ecraftz.in</span>
                 </a>
-                <a href="tel:+1234567890" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href="tel:+919188839916" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone size={18} />
-                  <span>+1 (234) 567-890</span>
+                  <span>+91 9188 839 916</span>
                 </a>
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <MapPin size={18} />
-                  <span>San Francisco, CA</span>
-                </div>
+               <div className="flex items-center gap-3 text-muted-foreground">
+                <MapPin size={18} />
+                <a 
+                  href="https://www.google.com/maps?q=Ecraftz,+2nd+Floor,+Above+Federal+Bank,+NV+Tower,+Kallai+Road+Calicut,+Kerala,+India+673003"
+                  target="_blank" 
+                  rel="noopener noreferrer">
+                    Ecraftz, 2nd Floor, Above Federal Bank,<br />
+                    NV Tower, Kallai Road Calicut,<br />
+                    Kerala, India - 673003
+                </a>
+               </div>
+
               </div>
             </motion.div>
           </div>

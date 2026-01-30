@@ -5,6 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -12,9 +19,8 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
     phone: '',
-    message: '',
+    webinar: '',
   });
   const { toast } = useToast();
 
@@ -29,7 +35,7 @@ const ContactForm = () => {
       });
 
       await fetch(
-        'https://script.google.com/macros/s/AKfycbwKv9dnUMA5b_Y4u3nkwk_6Vq8-OyWvPG5NlfAnn5nQY_3-VDpd2h4m7BXf_7gDCutFiw/exec',
+        'https://script.google.com/macros/s/AKfycbxS06Iom6OyCMSI4KJSLDwM46Zp5ZGAPeXyda8m1WQnn1idTXaevtIECR0NRLmFZe30/exec',
         {
           method: 'POST',
           body: formPayload,
@@ -48,7 +54,7 @@ const ContactForm = () => {
       // Reset form after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ name: '', email: '', company: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', webinar: '' });
       }, 3000);
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -103,7 +109,7 @@ const ContactForm = () => {
               transition={{ delay: 0.1, duration: 0.5 }}
             >
               <Input
-                placeholder="Your Name"
+                placeholder=" Your Name"
                 name="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -118,7 +124,7 @@ const ContactForm = () => {
             >
               <Input
                 type="email"
-                placeholder="Email Address"
+                placeholder="Email"
                 name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -130,16 +136,9 @@ const ContactForm = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="grid grid-cols-2 gap-4"
             >
               <Input
-                placeholder="Company"
-                name="company"
-                value={formData.company}
-                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              />
-              <Input
-                placeholder="Phone"
+                placeholder="Phone Number"
                 name="phone"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -151,19 +150,26 @@ const ContactForm = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <Textarea
-                placeholder="Tell us about your project..."
-                name="message"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-              />
+              <Select
+                value={formData.webinar}
+                onValueChange={(value) => setFormData({ ...formData, webinar: value })}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Which webinar to join?" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
+                  <SelectItem value="Video Editing">Video Editing</SelectItem>
+                </SelectContent>
+              </Select>
             </motion.div>
+
+
 
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
             >
               <Button
                 type="submit"
