@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ContactForm from './ContactForm';
@@ -14,6 +14,21 @@ const HeroSection = () => {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const phrases = [
+    'High-Value Professionals',
+    'Smart Entrepreneurs',
+    'Fast-Growing Business Owners',
+    'Influential Influencers',
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % phrases.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -57,7 +72,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-6">
           {/* Left Content */}
           <div className="text-center lg:text-left">
             <motion.div
@@ -69,28 +84,44 @@ const HeroSection = () => {
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm text-primary font-medium">Your IT Solution Partner</span>
             </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
-            >
-              Transform Your
-              <br />
-              <span className="gradient-text">Digital Future</span>
-            </motion.h1>
-
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              E-Academy delivers cutting-edge IT solutions that empower businesses
-              to innovate, scale, and succeed in the digital era.
+              This isn't a school that simply teaches!
             </motion.p>
-
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
+            >
+              We Shape
+              <div className="min-h-[1.5em] sm:h-auto">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={phrases[index]}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="gradient-text pb-2 inline-block sm:block"
+                  >
+                    {phrases[index]}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
+            >
+              Through Real Client Experience.
+            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -98,11 +129,8 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Button variant="premium" size="xl">
-                Explore Services
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button variant="premium-outline" size="xl">
                 Learn More
+                <ArrowRight className="ml-2" size={20} />
               </Button>
             </motion.div>
 
@@ -135,7 +163,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - Contact Form */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center w-full lg:w-auto">
             <ContactForm />
           </div>
         </div>

@@ -109,7 +109,7 @@ const ContactForm = () => {
       <div className="gradient-border p-6 sm:p-8 glow">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-display text-xl font-semibold text-foreground">
-            Get in Touch
+            Join Now
           </h3>
         </div>
 
