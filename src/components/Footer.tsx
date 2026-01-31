@@ -4,17 +4,17 @@ import {
   Phone,
   MapPin,
   Linkedin,
-  Twitter,
-  Github,
+  X,
+  Instagram,
   Facebook
 } from 'lucide-react';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/ecraftz-info-solutions/?originalSubdomain=in', label: 'LinkedIn' },
+    { icon: X, href: 'https://x.com/Ecraftz1/status/1246465823277006848', label: 'Twitter' },
+    { icon: Instagram, href: 'https://www.instagram.com/ecraftz_info_solutions/?hl=en', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/ecraftzinfosolutions/', label: 'Facebook' },
   ];
 
   return (
@@ -77,6 +77,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.1, y: -2 }}
                 className="w-10 h-10 rounded-lg bg-secondary/50 hover:bg-primary/20 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
               >
+                
                 <social.icon size={18} />
               </motion.a>
             ))}
