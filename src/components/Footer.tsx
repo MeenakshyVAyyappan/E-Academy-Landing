@@ -13,7 +13,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: 'https://www.linkedin.com/company/ecraftz-info-solutions/?originalSubdomain=in', label: 'LinkedIn' },
     { icon: X, href: 'https://x.com/Ecraftz1/status/1246465823277006848', label: 'Twitter' },
-    { icon: Instagram, href: 'https://www.instagram.com/ecraftz_info_solutions/?hl=en', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/eacademy_india?igsh=MWFjbG5wOGg2aTBlNg==', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/ecraftzinfosolutions/', label: 'Facebook' },
   ];
 
