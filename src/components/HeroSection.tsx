@@ -16,6 +16,7 @@ const HeroSection = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const phrases = [
+    'ഒറ്റമൈൻഡ് !കൈച്ചിലാവണം.',
     'High-Value Professionals',
     'Smart Entrepreneurs',
     'Fast-Growing Business Owners',
@@ -75,30 +76,34 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-6">
           {/* Left Content */}
           <div className="text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-medium">Your IT Solution Partner</span>
-            </motion.div>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
-            >
-              This isn't a school that simply teaches!
-            </motion.p>
+            {index !== 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+              >
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-sm text-primary font-medium">Your IT Solution Partner</span>
+              </motion.div>
+            )}
+            {index !== 0 && (
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
+              >
+                This isn't a school that simply teaches!
+              </motion.p>
+            )}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
             >
-              We Shape
+              {index !== 0 && "We Shape"}
               <div className="min-h-[1.5em] sm:h-auto">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -107,21 +112,23 @@ const HeroSection = () => {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="gradient-text pb-2 inline-block sm:block"
+                    className="gradient-text py-4 inline-block sm:block leading-normal"
                   >
                     {phrases[index]}
                   </motion.div>
                 </AnimatePresence>
               </div>
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
-            >
-              Through Real Client Experience.
-            </motion.p>
+            {index !== 0 && (
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
+              >
+                Through Real Client Experience.
+              </motion.p>
+            )}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

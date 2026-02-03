@@ -24,7 +24,7 @@ const ProgrammesSection = () => {
             title: "Free Webinar on AI-Integrated Digital Marketing",
             date: "07/02/2026",
             time: "2:00 PM – 4:00 PM",
-            location: "Ecraftz Info Solutions",
+            location: "Ecraftz Info Solutions, Calicut",
             tools: [
                 { icon: <MetaIcon className="w-6 h-6" />, name: "Meta" },
                 { icon: <Linkedin className="w-6 h-6" />, name: "LinkedIn" },
