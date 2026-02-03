@@ -31,6 +31,13 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToProgrammes = () => {
+    const programmesSection = document.getElementById('programmes');
+    if (programmesSection) {
+      programmesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       ref={containerRef}
@@ -135,42 +142,15 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button variant="premium" size="xl">
+              <Button variant="premium" size="xl" onClick={scrollToProgrammes}>
                 Learn More
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-border/50"
-            >
-              {[
-                { value: '500+', label: 'Clients Served' },
-                { value: '98%', label: 'Success Rate' },
-                { value: '24/7', label: 'Support' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="text-center lg:text-left"
-                >
-                  <div className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
 
           {/* Right Content - Contact Form */}
-          <div className="flex justify-center w-full lg:w-auto">
+          <div id="join-form" className="flex justify-center w-full lg:w-auto">
             <ContactForm />
           </div>
         </div>

@@ -46,7 +46,7 @@ const ProgrammesSection = () => {
     };
 
     return (
-        <section className="relative py-24 overflow-hidden bg-background">
+        <section id="programmes" className="relative py-24 overflow-hidden bg-background">
             {/* Background Gradients & Animation */}
             <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background z-0" />
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

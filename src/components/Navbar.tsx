@@ -15,7 +15,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
- 
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('join-form');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -43,7 +50,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
 
-            <Button variant="premium" size="default">
+            <Button variant="premium" size="default" onClick={scrollToContact}>
               Get Started
             </Button>
           </div>
@@ -68,7 +75,10 @@ const Navbar = () => {
             className="md:hidden glass border-b border-border/50"
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-              <Button variant="premium" className="mt-2">
+              <Button variant="premium" className="mt-2" onClick={() => {
+                scrollToContact();
+                setIsMobileMenuOpen(false);
+              }}>
                 Get Started
               </Button>
             </div>
